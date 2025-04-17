@@ -311,6 +311,8 @@ const input = document.getElementById("input");
 const cc = document.getElementById("pos");
 const icc = document.getElementById("neg");
 const spd = document.getElementById("spd");
+const acy = document.getElementById("acy");
+const rate = document.getElementById("rate");
 
 const set1 = document.getElementById("set1");
 const set2 = document.getElementById("set2");
@@ -327,13 +329,17 @@ function addWord() {
 function gameControl() {
     cc.innerText = correctCount;
     icc.innerText = incorrectCount;
+    
+    var accuracyPercent = correctCount / (correctCount + incorrectCount) * 100;
+    if ( !isNaN(accuracyPercent) ) acy.innerText = Math.floor(accuracyPercent * 10) / 10;
 
     const lastN = timeSamples.slice(-10);
     var avg = lastN.length ? lastN.reduce((a, b) => a + b, 0) / lastN.length : -1;
     if ( avg != -1 ) {
         avg = avg / 1000;
         avg = Math.floor(avg * 10) / 10;
-        spd.innerHTML = avg + "/key/sec";
+        spd.innerText = avg + "sec /key";
+        rate.innerText = getTypingRating(accuracyPercent, avg);
     }
 
     while ( game.children.length < 5 ) {
@@ -438,3 +444,17 @@ function cheat() {
     if(isRunningCheat) typeWord();
     
 }
+
+
+
+function clamp(v, min, max) {
+    return Math.max(min, Math.min(max, v));
+}
+
+function getTypingRating(accuracyPercent, secPerKey) {
+    const accuracyScore = clamp(((accuracyPercent - 85) / 15) * 10, 0, 10);
+    const speedScore = clamp(((0.5 - secPerKey) / 0.4) * 10, 0, 10);
+    const finalRating = (accuracyScore + speedScore) / 2;
+    return +finalRating.toFixed(2);
+}
+  
