@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: auto;
+    min-height: 100vh;
+    width: 100vw;
+    padding: 5px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+hr {
+    width:  100%;
+}
+
+#game {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    font-size: 40px;
+}
+
+#game > p {
+    padding: 5px;
+}
+
+#game > .typing {
+    background-color: gray;
+    color: white;
+    border-radius: 25%;
+}
+
+#input {
+    padding: 5px;
+    text-align: center;
+    font-size: 25px;
+}
