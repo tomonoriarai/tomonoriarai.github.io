@@ -1,0 +1,12 @@
+{
+    "languages": [
+        {
+            "name": "English",
+            "file": "english.json"
+        },
+        {
+            "name": "Japanese",
+            "file": "japanese.json"
+        }
+    ]
+}

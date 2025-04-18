@@ -4,11 +4,18 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
         <link rel="stylesheet" href="/style.css">
+        <script src="/lang.js" defer></script>
         <script src="/script.js" defer></script>
         <title>TypingGame</title>
     </head>
     <body>
         <h1>TypingGame!</h1>
+
+        <label>
+            <span>Language to Type: </span>
+            <select id="language_to_type" onchange="placeUpdate()"></select>
+        </label>
+
         <p>Accuracy: <span id="acy">?</span>% | Rate: <span id="rate">?</span>/10</p>
         <p>Positive: <span id="pos">0</span> | Negative: <span id="neg">0</span> | Speed: <span id="spd">No Enough Samples</span></p>
         <div id="game">
@@ -28,7 +35,7 @@
         <hr>
 
         <p>World's most lightweight TypingGame.</p>
-        <!-- <button onclick="cheat(this)">cheat mode</button> -->
         <p>Copyright &copy; 2025 Tomonori Arai</p>
+        <p>This website is licensed under <a href="https://choosealicense.com/licenses/gpl-3.0/" target="_blank"><b>GNU GPL v3.0</b></a>.</p>
     </body>
 </html>
